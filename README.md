@@ -1,1 +1,2 @@
-# WebApps
+This project is a subscription Platform that does not have a practical business use yet...
+Platform in progress
