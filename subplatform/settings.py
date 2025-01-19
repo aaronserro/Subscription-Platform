@@ -31,7 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "client",
+    "writer",
     "account",
+    'crispy_forms',
+    'crispy_bootstrap5',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -39,6 +43,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+CRISPY_ALLOWED_TEMPLATE_PACLS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
 AUTH_USER_MODEL = 'account.CustomUser'
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
