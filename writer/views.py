@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from . forms import ArticleForm
+from . forms import ArticleForm, UpdateUserForm
 from . models import Article
+from account.models import CustomUser
 
 
 @login_required(login_url="my_login")
@@ -66,6 +67,32 @@ def delete_article(request, pk):
         article.delete()
         return redirect('my-articles')
     return render(request, 'writer/delete-article.html')
+
+
+@login_required(login_url="my_login")
+def account_management(request):
+
+    form = UpdateUserForm(instance=request.user)
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('writer-dashboard')
+    context = {'UpdateUserForm': form}
+    return render(request,"writer/account-management.html", context)
+
+
+@login_required(login_url="my_login")
+def delete_account(request):
+    if request.method == 'POST':
+        deleteUser = CustomUser.objects.get(email=request.user)
+
+        deleteUser.delete()
+
+        return redirect('my_login')
+    return render(request, "writer/delete-account.html")
+
+
 
 
 
