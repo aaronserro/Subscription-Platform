@@ -79,7 +79,7 @@ def account_management(request):
             form.save()
             return redirect('writer-dashboard')
     context = {'UpdateUserForm': form}
-    return render(request,"writer/account-management.html", context)
+    return render(request, "writer/account-management.html", context)
 
 
 @login_required(login_url="my_login")
@@ -91,8 +91,3 @@ def delete_account(request):
 
         return redirect('my_login')
     return render(request, "writer/delete-account.html")
-
-
-
-
-
