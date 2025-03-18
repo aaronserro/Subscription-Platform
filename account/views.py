@@ -22,8 +22,6 @@ def register(request):
     context = {'RegisterForm': form}
 
     return render(request, 'account/register.html', context)
-
-
 def my_login(request):
     form = AuthenticationForm()
     if request.method == "POST":
